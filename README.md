@@ -2,6 +2,8 @@
 
 > **Ambient Pediatric Triage, Clinical Dosing Guard & Illness Episode Companion on Echo Show (MCP Spec 2025-11-25 / Streamable HTTP)**
 
+Built for the **Alexa+ track** of the **Build, Ship, Shape: Amazon Developer Hackathon**. It evaluates pediatric symptoms, calculates weight-based medication dosages, enforces safe re-dosing intervals, and generates clinical hand-off summaries through a self-hosted MCP server. A dedicated web application provides the **simulated Alexa+ experience** allowed by the hackathon rules.
+
 [![MCP Specification](https://img.shields.io/badge/MCP%20Spec-2025--11--25-blue.svg)](https://modelcontextprotocol.io/)
 [![Transport](https://img.shields.io/badge/Transport-Streamable%20HTTP-00d2ff.svg)](https://modelcontextprotocol.io/)
 [![Clinical Dataset](https://img.shields.io/badge/Clinical%20Source-Heartland%20Health%20%26%20AAP-emerald.svg)](https://heartlandhealth.org/dosing-charts/)
