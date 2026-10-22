@@ -1,234 +1,338 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Echo Show 15 — Alexa+ Simulator & MCP Inspector</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <!-- Ambient Top Pulse Bar -->
-  <div class="echo-listening-bar" id="listening-bar"></div>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Echo Show 15 — Alexa+ Simulator & MCP Inspector</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<!-- Ambient Top Pulse Bar -->
+		<div class="echo-listening-bar" id="listening-bar"></div>
 
-  <div class="app-container">
-    
-    <!-- LEFT PANEL: Authentic Echo Show 15 Smart Display -->
-    <section class="device-column">
-      <div class="echo-device-frame">
-        <div class="echo-bezel">
-          
-          <!-- Bezel Camera / Mic hardware cluster -->
-          <div class="bezel-top">
-            <div class="camera-cluster">
-              <div class="sensor-dot"></div>
-              <div class="camera-lens"></div>
-              <div class="mic-pinhole"></div>
-            </div>
-          </div>
+		<div class="app-container">
+			<!-- LEFT PANEL: Authentic Echo Show 15 Smart Display -->
+			<section class="device-column">
+				<div class="echo-device-frame">
+					<div class="echo-bezel">
+						<!-- Bezel Camera / Mic hardware cluster -->
+						<div class="bezel-top">
+							<div class="camera-cluster">
+								<div class="sensor-dot"></div>
+								<div class="camera-lens"></div>
+								<div class="mic-pinhole"></div>
+							</div>
+						</div>
 
-          <!-- Echo Screen -->
-          <div class="echo-screen" id="echo-screen">
-            
-            <!-- Header bar with clock, LittleGuard title badge & weather -->
-            <header class="echo-status-bar">
-              <div class="status-left">
-                <span class="echo-brand-text">alexa<span>+</span></span>
-                <span class="little-guard-badge">🛡️ LittleGuard</span>
-                <div class="weather-widget">
-                  <span class="weather-icon">⛅</span>
-                  <span class="temp">72°</span>
-                  <span class="weather-desc">Partly Cloudy</span>
-                </div>
-              </div>
-              <div class="status-right">
-                <div class="time-display" id="time-display">12:45 <span class="ampm">PM</span></div>
-                <div class="date-display" id="date-display">Thu, Oct 22</div>
-              </div>
-            </header>
+						<!-- Echo Screen -->
+						<div class="echo-screen" id="echo-screen">
+							<!-- Header bar with clock, LittleGuard title badge & weather -->
+							<header class="echo-status-bar">
+								<div class="status-left">
+									<span class="echo-brand-text">alexa<span>+</span></span>
+									<span class="little-guard-badge">🛡️ LittleGuard</span>
+									<div class="weather-widget">
+										<span class="weather-icon">⛅</span>
+										<span class="temp">72°</span>
+										<span class="weather-desc">Partly Cloudy</span>
+									</div>
+								</div>
+								<div class="status-right">
+									<div class="time-display" id="time-display">
+										12:45 <span class="ampm">PM</span>
+									</div>
+									<div class="date-display" id="date-display">Thu, Oct 22</div>
+								</div>
+							</header>
 
-            <!-- Alexa Spoken Speech Bubble (Hero Area) -->
-            <div class="echo-hero-dialogue">
-              <div class="alexa-avatar-cluster">
-                <div class="echo-cyan-orb" id="echo-orb">
-                  <div class="orb-core"></div>
-                </div>
-                <div class="dialogue-meta">
-                  <span class="dialogue-label" id="dialogue-status-label">Alexa Ready</span>
-                  <span class="dialogue-utterance" id="last-utterance-text">"Tap a prompt or speak below"</span>
-                </div>
-              </div>
-              <div class="alexa-spoken-card" id="spoken-card">
-                <p id="alexa-speech-text">Good afternoon. I'm connected to your local Alexa+ Agent Skill MCP server. How can I help you today?</p>
-              </div>
-            </div>
+							<!-- Alexa Spoken Speech Bubble (Hero Area) -->
+							<div class="echo-hero-dialogue">
+								<div class="alexa-avatar-cluster">
+									<div class="echo-cyan-orb" id="echo-orb">
+										<div class="orb-core"></div>
+									</div>
+									<div class="dialogue-meta">
+										<span class="dialogue-label" id="dialogue-status-label"
+											>Alexa Ready</span
+										>
+										<span class="dialogue-utterance" id="last-utterance-text"
+											>"Tap a prompt or speak below"</span
+										>
+									</div>
+								</div>
+								<div class="alexa-spoken-card" id="spoken-card">
+									<p id="alexa-speech-text">
+										Good afternoon. I'm connected to your local Alexa+ Agent
+										Skill MCP server. How can I help you today?
+									</p>
+								</div>
+							</div>
 
-            <!-- ECHO SHOW AMBIENT HOME SCREEN (STANDBY STATE) -->
-            <div class="echo-ambient-home" id="echo-ambient-home">
-              <div class="ambient-clock-row">
-                <div class="ambient-large-clock" id="ambient-clock">12:45 <span class="ampm">PM</span></div>
-                <div class="ambient-date-weather">
-                  <div class="ambient-date" id="ambient-date">Thursday, October 22</div>
-                  <div class="ambient-weather">⛅ 72° • Nursery Air Quality: Good</div>
-                </div>
-              </div>
+							<!-- ECHO SHOW AMBIENT HOME SCREEN (STANDBY STATE) -->
+							<div class="echo-ambient-home" id="echo-ambient-home">
+								<div class="ambient-clock-row">
+									<div class="ambient-large-clock" id="ambient-clock">
+										12:45 <span class="ampm">PM</span>
+									</div>
+									<div class="ambient-date-weather">
+										<div class="ambient-date" id="ambient-date">
+											Thursday, October 22
+										</div>
+										<div class="ambient-weather">
+											⛅ 72° • Nursery Air Quality: Good
+										</div>
+									</div>
+								</div>
 
-              <!-- Patient Glance Status Capsule -->
-              <div class="patient-ambient-capsule">
-                <div class="pac-icon">👶</div>
-                <div class="pac-details">
-                  <div class="pac-name">Emma <span class="pac-age">4 Months • 14.2 lbs</span></div>
-                  <div class="pac-vitals">Last Temp: <strong style="color:#fbbf24;">101.4° F</strong> • Last Dose: <strong>1.25 mL Tylenol (2h ago)</strong></div>
-                </div>
-                <div class="pac-badge locked" id="ambient-status-badge">Re-Dose Locked: 2h left</div>
-              </div>
+								<!-- Patient Glance Status Capsule -->
+								<div class="patient-ambient-capsule">
+									<div class="pac-icon">👶</div>
+									<div class="pac-details">
+										<div class="pac-name">
+											Emma <span class="pac-age">4 Months • 14.2 lbs</span>
+										</div>
+										<div class="pac-vitals">
+											Last Temp:
+											<strong style="color: #fbbf24">101.4° F</strong> • Last
+											Dose: <strong>1.25 mL Tylenol (2h ago)</strong>
+										</div>
+									</div>
+									<div class="pac-badge locked" id="ambient-status-badge">
+										Re-Dose Locked: 2h left
+									</div>
+								</div>
 
-              <!-- Ambient Prompt Helper -->
-              <div class="ambient-mic-prompt">
-                <span class="ambient-sparkle">✨</span>
-                <span>Try: <em>"Alexa, baby has a fever of 101.4 and is tugging her ear"</em></span>
-              </div>
-            </div>
+								<!-- Ambient Prompt Helper -->
+								<div class="ambient-mic-prompt">
+									<span class="ambient-sparkle">✨</span>
+									<span
+										>Try:
+										<em
+											>"Alexa, baby has a fever of 101.4 and is tugging her
+											ear"</em
+										></span
+									>
+								</div>
+							</div>
 
-            <!-- ECHO SHOW ACTIVE FULL-SCREEN APL CARD EXPERIENCE (FOCUSED STATE) -->
-            <div class="echo-apl-fullscreen-card" id="multimodal-stage" style="display: none;">
-              <div class="apl-card-top-bar">
-                <div class="apl-badge-group">
-                  <span class="apl-live-dot"></span>
-                  <span class="multimodal-badge" id="mm-badge">AAP Clinical Evaluation</span>
-                </div>
-                <button type="button" class="apl-dismiss-btn" id="mm-dismiss-btn" title="Dismiss to Ambient Clock">✕ Return Home</button>
-              </div>
-              <div class="apl-card-body" id="multimodal-card-content">
-                <!-- Single full-bleed focused visual card -->
-              </div>
-            </div>
+							<!-- ECHO SHOW ACTIVE FULL-SCREEN APL CARD EXPERIENCE (FOCUSED STATE) -->
+							<div
+								class="echo-apl-fullscreen-card"
+								id="multimodal-stage"
+								style="display: none"
+							>
+								<div class="apl-card-top-bar">
+									<div class="apl-badge-group">
+										<span class="apl-live-dot"></span>
+										<span class="multimodal-badge" id="mm-badge"
+											>AAP Clinical Evaluation</span
+										>
+									</div>
+									<button
+										type="button"
+										class="apl-dismiss-btn"
+										id="mm-dismiss-btn"
+										title="Dismiss to Ambient Clock"
+									>
+										✕ Return Home
+									</button>
+								</div>
+								<div class="apl-card-body" id="multimodal-card-content">
+									<!-- Single full-bleed focused visual card -->
+								</div>
+							</div>
 
-            <!-- Suggestion Chips Row -->
-            <div class="echo-suggestion-shelf">
-              <span class="shelf-label">Clinical Utterances:</span>
-              <div class="chips-scroll">
-                <button class="echo-chip highlight-mm" data-prompt="Baby is 4 months old, fever is 101.4, tugging at left ear, took 1.25ml infant Tylenol 2 hours ago.">🩺 "4mo fever 101.4 & ear tugging"</button>
-                <button class="echo-chip highlight-mm" data-prompt="How much Motrin can my 14 lb baby take?">🛑 "How much Motrin for 14 lbs?"</button>
-                <button class="echo-chip highlight-mm" data-prompt="How much Tylenol for a 14 pound baby?">⚖️ "Heartland Tylenol dose for 14 lbs"</button>
-                <button class="echo-chip" data-prompt="Can I give her more medicine now?">⏰ "Is it safe to re-dose now?"</button>
-                <button class="echo-chip" data-prompt="What can I do to keep her comfortable?">💧 "Non-medicine comfort guidelines"</button>
-                <button class="echo-chip" data-prompt="Export summary for Panda Pediatrics">📋 "Export summary for doctor visit"</button>
-              </div>
-            </div>
+							<!-- Suggestion Chips Row -->
+							<div class="echo-suggestion-shelf">
+								<span class="shelf-label">Clinical Utterances:</span>
+								<div class="chips-scroll">
+									<button
+										class="echo-chip highlight-mm"
+										data-prompt="Baby is 4 months old, fever is 101.4, tugging at left ear, took 1.25ml infant Tylenol 2 hours ago."
+									>
+										🩺 "4mo fever 101.4 & ear tugging"
+									</button>
+									<button
+										class="echo-chip highlight-mm"
+										data-prompt="How much Motrin can my 14 lb baby take?"
+									>
+										🛑 "How much Motrin for 14 lbs?"
+									</button>
+									<button
+										class="echo-chip highlight-mm"
+										data-prompt="How much Tylenol for a 14 pound baby?"
+									>
+										⚖️ "How much Tylenol dose for 14 lbs"
+									</button>
+									<button
+										class="echo-chip"
+										data-prompt="Can I give her more medicine now?"
+									>
+										⏰ "Is it safe to re-dose now?"
+									</button>
+									<button
+										class="echo-chip"
+										data-prompt="What can I do to keep her comfortable?"
+									>
+										💧 "Non-medicine comfort guidelines"
+									</button>
+									<button
+										class="echo-chip"
+										data-prompt="Export summary for Panda Pediatrics"
+									>
+										📋 "Export summary for doctor visit"
+									</button>
+								</div>
+							</div>
 
-            <!-- Bottom Utterance Input Bar -->
-            <footer class="echo-command-footer">
-              <form id="echo-form" class="echo-input-bar">
-                <div class="alexa-echo-ring-btn" id="voice-ring-btn" title="Tap to wake Alexa">
-                  <div class="ring-gradient"></div>
-                  <div class="ring-dot"></div>
-                </div>
-                <input 
-                  type="text" 
-                  id="user-input" 
-                  placeholder="Ask Alexa or type an utterance..." 
-                  autocomplete="off" 
-                  required
-                />
-                <button type="submit" class="submit-action-btn" title="Send to Alexa">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M3.4 20.4l17.45-7.48a1 1 0 000-1.84L3.4 3.6a.993.993 0 00-1.39.91L2 9.12c0 .5.37.93.87.99L17 12 2.87 13.88c-.5.07-.87.49-.87 1l.01 4.61c0 .71.73 1.2 1.39.91z"/>
-                  </svg>
-                </button>
-              </form>
-            </footer>
+							<!-- Bottom Utterance Input Bar -->
+							<footer class="echo-command-footer">
+								<form id="echo-form" class="echo-input-bar">
+									<div
+										class="alexa-echo-ring-btn"
+										id="voice-ring-btn"
+										title="Tap to wake Alexa"
+									>
+										<div class="ring-gradient"></div>
+										<div class="ring-dot"></div>
+									</div>
+									<input
+										type="text"
+										id="user-input"
+										placeholder="Ask Alexa or type an utterance..."
+										autocomplete="off"
+										required
+									/>
+									<button
+										type="submit"
+										class="submit-action-btn"
+										title="Send to Alexa"
+									>
+										<svg
+											width="18"
+											height="18"
+											viewBox="0 0 24 24"
+											fill="currentColor"
+										>
+											<path
+												d="M3.4 20.4l17.45-7.48a1 1 0 000-1.84L3.4 3.6a.993.993 0 00-1.39.91L2 9.12c0 .5.37.93.87.99L17 12 2.87 13.88c-.5.07-.87.49-.87 1l.01 4.61c0 .71.73 1.2 1.39.91z"
+											/>
+										</svg>
+									</button>
+								</form>
+							</footer>
+						</div>
+						<!-- end echo-screen -->
+					</div>
+					<!-- end echo-bezel -->
+				</div>
+			</section>
 
-          </div> <!-- end echo-screen -->
-        </div> <!-- end echo-bezel -->
-      </div>
-    </section>
+			<!-- RIGHT PANEL: Dedicated High-Visibility MCP Inspector -->
+			<aside class="inspector-column">
+				<div class="inspector-card">
+					<!-- Inspector Header -->
+					<div class="inspector-header">
+						<div class="inspector-title">
+							<span class="mcp-icon">🛡️</span>
+							<div>
+								<h3>LittleGuard: PediatricCare MCP</h3>
+								<span class="mcp-endpoint-url">Streamable HTTP: /mcp</span>
+							</div>
+						</div>
+						<span class="status-indicator-badge live" id="mcp-status-pill"
+							>Connected</span
+						>
+					</div>
 
-    <!-- RIGHT PANEL: Dedicated High-Visibility MCP Inspector -->
-    <aside class="inspector-column">
-      <div class="inspector-card">
-        
-        <!-- Inspector Header -->
-        <div class="inspector-header">
-          <div class="inspector-title">
-            <span class="mcp-icon">🛡️</span>
-            <div>
-              <h3>LittleGuard: PediatricCare MCP</h3>
-              <span class="mcp-endpoint-url">Streamable HTTP: /mcp</span>
-            </div>
-          </div>
-          <span class="status-indicator-badge live" id="mcp-status-pill">Connected</span>
-        </div>
+					<!-- Latest Dispatched Tool Banner -->
+					<div class="mcp-latest-banner">
+						<div class="banner-label">Latest Tool Dispatched</div>
+						<div class="banner-tool-row">
+							<span class="banner-tool-name" id="latest-tool-name"
+								>None (Ready)</span
+							>
+							<span class="banner-status-tag" id="latest-tool-status"
+								>IDLE</span
+							>
+						</div>
+						<div class="banner-reasoning" id="latest-tool-reasoning">
+							Utterance intent matching & MCP tool routing will appear here in
+							real-time.
+						</div>
+					</div>
 
-        <!-- Latest Dispatched Tool Banner -->
-        <div class="mcp-latest-banner">
-          <div class="banner-label">Latest Tool Dispatched</div>
-          <div class="banner-tool-row">
-            <span class="banner-tool-name" id="latest-tool-name">None (Ready)</span>
-            <span class="banner-status-tag" id="latest-tool-status">IDLE</span>
-          </div>
-          <div class="banner-reasoning" id="latest-tool-reasoning">
-            Utterance intent matching & MCP tool routing will appear here in real-time.
-          </div>
-        </div>
+					<!-- Protocol Tabs -->
+					<div class="inspector-tabs">
+						<button class="tab-btn active" data-tab="tab-response">
+							Tool Result
+						</button>
+						<button class="tab-btn" data-tab="tab-arguments">
+							Tool Arguments
+						</button>
+						<button class="tab-btn" data-tab="tab-raw">Full MCP JSON</button>
+						<button class="tab-btn" data-tab="tab-server">
+							Registered Tools
+						</button>
+					</div>
 
-        <!-- Protocol Tabs -->
-        <div class="inspector-tabs">
-          <button class="tab-btn active" data-tab="tab-response">Tool Result</button>
-          <button class="tab-btn" data-tab="tab-arguments">Tool Arguments</button>
-          <button class="tab-btn" data-tab="tab-raw">Full MCP JSON</button>
-          <button class="tab-btn" data-tab="tab-server">Registered Tools</button>
-        </div>
+					<!-- Tab 1: Tool Execution Result -->
+					<div class="tab-content active" id="tab-response">
+						<div class="code-block-wrapper">
+							<div class="code-label">Parsed Tool Content Output:</div>
+							<pre><code id="code-tool-result">// Awaiting next tool execution...</code></pre>
+						</div>
+					</div>
 
-        <!-- Tab 1: Tool Execution Result -->
-        <div class="tab-content active" id="tab-response">
-          <div class="code-block-wrapper">
-            <div class="code-label">Parsed Tool Content Output:</div>
-            <pre><code id="code-tool-result">// Awaiting next tool execution...</code></pre>
-          </div>
-        </div>
+					<!-- Tab 2: Tool Arguments -->
+					<div class="tab-content" id="tab-arguments">
+						<div class="code-block-wrapper">
+							<div class="code-label">
+								Agent Inferred Parameters (Zod Validated):
+							</div>
+							<pre><code id="code-tool-args">// No arguments passed yet</code></pre>
+						</div>
+					</div>
 
-        <!-- Tab 2: Tool Arguments -->
-        <div class="tab-content" id="tab-arguments">
-          <div class="code-block-wrapper">
-            <div class="code-label">Agent Inferred Parameters (Zod Validated):</div>
-            <pre><code id="code-tool-args">// No arguments passed yet</code></pre>
-          </div>
-        </div>
+					<!-- Tab 3: Full MCP Payload -->
+					<div class="tab-content" id="tab-raw">
+						<div class="code-block-wrapper">
+							<div class="code-label">
+								Full Simulation & MCP Response Payload:
+							</div>
+							<pre><code id="code-raw-json">// Raw payload will be displayed here</code></pre>
+						</div>
+					</div>
 
-        <!-- Tab 3: Full MCP Payload -->
-        <div class="tab-content" id="tab-raw">
-          <div class="code-block-wrapper">
-            <div class="code-label">Full Simulation & MCP Response Payload:</div>
-            <pre><code id="code-raw-json">// Raw payload will be displayed here</code></pre>
-          </div>
-        </div>
+					<!-- Tab 4: Server Tools Directory -->
+					<div class="tab-content" id="tab-server">
+						<div class="registered-tools-list" id="registered-tools-list">
+							<!-- Dynamically populated -->
+						</div>
+					</div>
 
-        <!-- Tab 4: Server Tools Directory -->
-        <div class="tab-content" id="tab-server">
-          <div class="registered-tools-list" id="registered-tools-list">
-            <!-- Dynamically populated -->
-          </div>
-        </div>
+					<!-- History Log of Invocations -->
+					<div class="history-section">
+						<div class="history-header">
+							<span>Execution Timeline</span>
+							<span class="clear-history" id="clear-history-btn">Clear</span>
+						</div>
+						<div class="history-list" id="history-list">
+							<div class="history-empty">
+								No calls recorded in this session.
+							</div>
+						</div>
+					</div>
+				</div>
+			</aside>
+		</div>
 
-        <!-- History Log of Invocations -->
-        <div class="history-section">
-          <div class="history-header">
-            <span>Execution Timeline</span>
-            <span class="clear-history" id="clear-history-btn">Clear</span>
-          </div>
-          <div class="history-list" id="history-list">
-            <div class="history-empty">No calls recorded in this session.</div>
-          </div>
-        </div>
-
-      </div>
-    </aside>
-
-  </div>
-
-  <script src="app.js"></script>
-</body>
+		<script src="app.js"></script>
+	</body>
 </html>
